@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Memo!</string>
+    <string name="app_name">DoodleMemo</string>
+    <string name="helpdoc">关于使用功能的提示：\n
+    						一、点击光标处打开书写层\n
+    						 二、按返回键退出书写层\n
+    						 三、可以拖动字和光标到任意位置\n
+    						 四、可以把字拖到光标位置删除字\n
+    						 五、在画笔颜色选择中点击圆心处结束\n
+    						 六、可以尝试在桌面显示最新的便签\n
+    						 七、可以把自己的图片放入SD卡DoodleMemo中memobg文件夹中作为背景\n
+    						 八、由于算法问题导致标点等小符号会被放大，最好跟字一起写\n
+    						 九、部分功能不够完善我将继续努力\n
+    						 联系方式:\n
+    						  pan49@126.com \n
+    						 			Drinking
+    						 </string>
+</resources>

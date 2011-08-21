@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#FFFFFF"
+            android:layout_weight="1"
+            >
+          <LinearLayout android:id="@+id/hidecontainer"
+          android:orientation="vertical"
+          android:layout_width="fill_parent"
+           android:layout_height="fill_parent">
+	<com.android.drawmemo.Display
+      android:id="@+id/displayview" 
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_weight="0.1"
+	/>
+
+   
+       
+</LinearLayout>
+                 
+                 
+<LinearLayout android:id="@+id/hider"
+          android:orientation="vertical"
+          android:layout_width="fill_parent"
+          android:visibility="gone"
+          android:layout_weight="0.1"
+           android:layout_height="fill_parent">
+ 	<com.android.gestureview.GestureOverlayView
+        android:id="@+id/gestures_overlay"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.1"
+        android:background="@drawable/translucent_background"
+        android:gestureStrokeType="multiple" />
+            <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.9"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        >
+        <Button
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:onClick="next"
+            android:text="书写" />
+            <Button
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:onClick="backspace"
+            android:text="退格" />
+     <Button
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:onClick="redraw"
+            android:text="重写" />
+                 <Button
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:onClick="setpaint"
+            android:text="画笔" />
+            
+            </LinearLayout>
+        
+</LinearLayout>
+
+</FrameLayout>

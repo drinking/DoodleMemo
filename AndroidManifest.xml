@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.android.drawmemo"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".Memo"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CreateMemo">
+        </activity>
+         <activity android:name=".MemoHistory">
+        </activity>
+		 <activity android:name=".MemoViewer"></activity> 
+		<receiver android:name=".MemoWidgetProider">
+		<meta-data android:name="android.appwidget.provider"
+		 		   android:resource="@xml/appwidget_provider"/>
+		<intent-filter>
+			<action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+			<action android:name="android.appwidget.action.SENDTOUPDATE"/>
+		</intent-filter>
+	</receiver>
+    </application>
+<!-- 在SDCard中创建与删除文件权限 --> 
+<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/> 
+<!-- 往SDCard写入数据权限 --> 
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> 
+
+</manifest> 
