@@ -136,6 +136,7 @@ public class Gesture implements Parcelable {
             path.addPath(strokes.get(i).getPath());
         }
 
+       
         return path;
     }
 
@@ -205,7 +206,18 @@ public class Gesture implements Parcelable {
             canvas.drawPath(path, paint);
         }
 
+        
         return bitmap;
+    }
+    public Path toNormalSize(int width ,int height,int numSample) {
+    	Path path=new Path();
+        final ArrayList<GestureStroke> strokes = mStrokes;
+        final int count = strokes.size();
+
+        for (int i = 0; i < count; i++) {
+            path.addPath(strokes.get(i).toPath(width, height, numSample));
+        }
+    	return path;
     }
 
     /**
@@ -239,7 +251,7 @@ public class Gesture implements Parcelable {
         final float sy = (height - 2 * inset) / bounds.height();
         final float scale = sx > sy ? sy : sx;
         paint.setStrokeWidth(2.0f / scale);
-        float offsetx=(width-bounds.width()* scale)/2;//修改源代码部分使字尽量居中
+        float offsetx=(width-bounds.width()* scale)/2;//锟睫革拷源锟斤拷锟诫部锟斤拷使锟街撅拷锟斤拷锟斤拷锟斤拷
         float offsety=(height-bounds.height()* scale)/2;
         
         path.offset(-bounds.left+offsetx+(width - bounds.width() * scale) / 2.0f,
@@ -271,8 +283,8 @@ public class Gesture implements Parcelable {
         final float sx = (width - 2 * inset) / bounds.width();
         final float sy = (height - 2 * inset) / bounds.height();
         final float scale = sx > sy ? sy : sx;
-       // paint.setStrokeWidth(2.0f / scale);//影响画笔粗细问题,注释掉先,根据需要再行调整
-        float offsetx=(width-bounds.width()* scale)/2;//修改源代码部分使字尽量居中
+       // paint.setStrokeWidth(2.0f / scale);
+        float offsetx=(width-bounds.width()* scale)/2;
         float offsety=(height-bounds.height()* scale)/2;
         
         path.offset(-bounds.left+offsetx+(width - bounds.width() * scale) / 2.0f,

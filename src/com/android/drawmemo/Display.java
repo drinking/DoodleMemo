@@ -220,6 +220,7 @@ public class Display extends View {
 				for(GestureBox gb:gesturelist)
 				{
 					mCanvas.drawBitmap(gb.toBitmap(), gb.getX(), gb.getY(), gb.getPaint());
+				
 				}
 			}
 		 return mBackground;

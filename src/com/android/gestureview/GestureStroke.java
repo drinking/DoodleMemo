@@ -146,6 +146,7 @@ public class GestureStroke {
             }
         }
 
+        
         mCachedPath = path;
     }
 
