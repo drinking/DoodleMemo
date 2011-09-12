@@ -14,21 +14,22 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int helppic=0x7f020000;
-        public static final int icon=0x7f020001;
-        public static final int incoming_bubble_selected=0x7f020002;
-        public static final int mainbg=0x7f020003;
-        public static final int memohistorypic=0x7f020004;
-        public static final int memopaper2=0x7f020005;
-        public static final int menu=0x7f020006;
-        public static final int newmemopic=0x7f020007;
-        public static final int paintguide=0x7f020008;
-        public static final int quitpic=0x7f020009;
-        public static final int translucent_background=0x7f02000a;
-        public static final int year1=0x7f02000b;
-        public static final int year2=0x7f02000c;
-        public static final int year3=0x7f02000d;
-        public static final int year4=0x7f02000e;
+        public static final int deskmemo=0x7f020000;
+        public static final int helppic=0x7f020001;
+        public static final int icon=0x7f020002;
+        public static final int incoming_bubble_selected=0x7f020003;
+        public static final int mainbg=0x7f020004;
+        public static final int memohistorypic=0x7f020005;
+        public static final int memopaper2=0x7f020006;
+        public static final int menu=0x7f020007;
+        public static final int newmemopic=0x7f020008;
+        public static final int paintguide=0x7f020009;
+        public static final int quitpic=0x7f02000a;
+        public static final int translucent_background=0x7f02000b;
+        public static final int year1=0x7f02000c;
+        public static final int year2=0x7f02000d;
+        public static final int year3=0x7f02000e;
+        public static final int year4=0x7f02000f;
     }
     public static final class id {
         public static final int Gallery01=0x7f070007;

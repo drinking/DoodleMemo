@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
+  android:layout_width="220dp"
+  android:layout_height="220dp"
   android:orientation="horizontal"
-  android:weightSum="1">
+  android:weightSum="1"
+  android:background="@drawable/deskmemo">
 
 <ImageView android:id="@+id/NewMemo" 
 		   android:layout_width="220dp" 
 		   android:layout_height="220dp"
-		   android:background="#55ffffff">
+		   
+		   >
 		   </ImageView>
-		   <!-- 
+<!-- 
 <ImageView 
+android:background="#55ffffff"
 			android:id="@+id/ImageView01" 
 			android:layout_width="220dp" 
 			android:layout_height="220dp"
