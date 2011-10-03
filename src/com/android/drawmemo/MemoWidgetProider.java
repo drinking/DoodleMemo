@@ -28,22 +28,18 @@ public class MemoWidgetProider extends AppWidgetProvider {
 	}
 	 @Override  
 	    public void onReceive(Context context, Intent intent) {  
-	        // TODO Auto-generated method stub  
-		 Log.d("oooooooo", "xxxxxxxxxxxxupdate2");
 		 	//if not call the super function,the onUpdate() function will not responsible
-		 	super.onReceive(context, intent); 
+		 	super.onReceive(context, intent);
+		 	
 		 	if(intent.getAction().equals("android.appwidget.action.SENDTOUPDATE2")) {
 		 		
 				File f=new File(GlobalValue.datsavepath);
 				File []files=f.listFiles();
 				Bitmap bitmap=null;
 				if(files.length>0) {
-					bitmap=FileUtils.readToNormal(files[0].getPath(),50,50,20);
-					
+					bitmap=FileUtils.readToNormal(files[0].getPath(),30,30,20);	
 				}
 		 		RemoteViews remoteview=new RemoteViews(context.getPackageName(),R.layout.memowidget);
-//		 		remoteview.setImageViewResource(R.id.ImageView01, R.drawable.year4);
-//		 		remoteview.setImageViewResource(R.id.NewMemo, R.drawable.year4);
 		 		if(bitmap!=null) {
 		 		remoteview.setImageViewBitmap(R.id.NewMemo, bitmap);
 		 		}

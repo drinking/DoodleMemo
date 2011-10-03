@@ -18,6 +18,7 @@ package com.android.gestureview;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
@@ -214,10 +215,29 @@ public class Gesture implements Parcelable {
         final ArrayList<GestureStroke> strokes = mStrokes;
         final int count = strokes.size();
 
-        for (int i = 0; i < count; i++) {
-            path.addPath(strokes.get(i).toPath(width, height, numSample));
-        }
-    	return path;
+//        for (int i = 0; i < count; i++) {
+//            path.addPath(strokes.get(i).toPath(width, height, numSample));
+//        }
+        Matrix mat=new Matrix();
+        path=toPath();//toPath(null, width,height, 2,numSample) ;
+    	
+        final RectF bounds = new RectF();
+        path.computeBounds(bounds, true);
+
+        final float sx = (width ) / bounds.width();
+        final float sy = (height) / bounds.height();
+        final float scale = sx > sy ? sy : sx;
+        RectF bound=new RectF();
+        path.computeBounds(bound,false);
+        mat.setTranslate(-bound.left, -bound.top);
+//        mat.setTranslate(-bound.left, -bound.top);
+        mat.postScale(scale, scale);
+
+       
+        Log.d("my path bound", "left:"+bound.left+"top:"+bound.top);
+        path.transform(mat);
+        return path;
+    	//TODO do it
     }
 
     /**

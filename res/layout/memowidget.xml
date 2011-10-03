@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="220dp"
-  android:layout_height="220dp"
+  android:layout_width="146dp"
+  android:layout_height="146dp"
   android:orientation="horizontal"
-  android:weightSum="1"
-  android:background="@drawable/deskmemo">
 
-<ImageView android:id="@+id/NewMemo" 
-		   android:layout_width="220dp" 
-		   android:layout_height="220dp"
-		   
-		   >
-		   </ImageView>
-<!-- 
+>
 <ImageView 
-android:background="#55ffffff"
-			android:id="@+id/ImageView01" 
-			android:layout_width="220dp" 
-			android:layout_height="220dp"
+			android:background="@drawable/desk_bg"
+			android:id="@+id/memobackground" 
+			android:layout_width="146dp" 
+			android:layout_height="146dp"
 			>
 </ImageView>
--->
+<ImageView android:id="@+id/NewMemo" 
+		   android:layout_width="130dp" 
+		   android:layout_height="130dp"
+		   android:layout_centerInParent="true"
+		   >
+		   </ImageView>
+<Button android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:id="@+id/desk_new_button" 
+		android:background="@drawable/desk_button"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentBottom="true"
+		android:layout_marginRight="4px"
+		android:layout_marginBottom="4px">
+		</Button>
 
-</FrameLayout>
+
+
+
+
+</RelativeLayout>

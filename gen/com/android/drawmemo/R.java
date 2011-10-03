@@ -14,44 +14,60 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int deskmemo=0x7f020000;
-        public static final int helppic=0x7f020001;
-        public static final int icon=0x7f020002;
-        public static final int incoming_bubble_selected=0x7f020003;
-        public static final int mainbg=0x7f020004;
-        public static final int memohistorypic=0x7f020005;
-        public static final int memopaper2=0x7f020006;
-        public static final int menu=0x7f020007;
-        public static final int newmemopic=0x7f020008;
-        public static final int paintguide=0x7f020009;
-        public static final int quitpic=0x7f02000a;
-        public static final int translucent_background=0x7f02000b;
-        public static final int year1=0x7f02000c;
-        public static final int year2=0x7f02000d;
-        public static final int year3=0x7f02000e;
-        public static final int year4=0x7f02000f;
+        public static final int desk_bg=0x7f020000;
+        public static final int desk_button=0x7f020001;
+        public static final int help_button_down=0x7f020002;
+        public static final int help_button_up=0x7f020003;
+        public static final int helpbutton_selector=0x7f020004;
+        public static final int icon=0x7f020005;
+        public static final int login_bg=0x7f020006;
+        public static final int memopaper2=0x7f020007;
+        public static final int menu=0x7f020008;
+        public static final int newmemo_down=0x7f020009;
+        public static final int newmemo_selector=0x7f02000a;
+        public static final int newmemo_up=0x7f02000b;
+        public static final int oldmemo_down=0x7f02000c;
+        public static final int oldmemo_selector=0x7f02000d;
+        public static final int oldmemo_up=0x7f02000e;
+        public static final int paintguide=0x7f02000f;
+        public static final int quit_button_down=0x7f020010;
+        public static final int quit_button_up=0x7f020011;
+        public static final int quitbutton_selector=0x7f020012;
+        public static final int translucent_background=0x7f020013;
+        public static final int year1=0x7f020014;
+        public static final int year2=0x7f020015;
+        public static final int year3=0x7f020016;
+        public static final int year4=0x7f020017;
     }
     public static final class id {
-        public static final int Gallery01=0x7f070007;
-        public static final int ImageView01=0x7f070008;
-        public static final int NewMemo=0x7f070009;
-        public static final int createnew=0x7f070005;
+        public static final int Gallery01=0x7f07000b;
+        public static final int ImageView01=0x7f07000c;
+        public static final int NewMemo=0x7f07000e;
+        public static final int createnew=0x7f070009;
+        public static final int desk_new_button=0x7f07000f;
         public static final int displayview=0x7f070001;
         public static final int filename=0x7f070004;
         public static final int gestures_overlay=0x7f070003;
+        public static final int help_button=0x7f070007;
         public static final int hidecontainer=0x7f070000;
         public static final int hider=0x7f070002;
-        public static final int viewhistory=0x7f070006;
+        public static final int memobackground=0x7f07000d;
+        public static final int new_memo_button=0x7f070005;
+        public static final int old_memo_button=0x7f070006;
+        public static final int quit_button=0x7f070008;
+        public static final int viewhistory=0x7f07000a;
     }
     public static final class layout {
         public static final int creatememo=0x7f030000;
         public static final int getfile=0x7f030001;
-        public static final int main=0x7f030002;
-        public static final int memoviewer=0x7f030003;
-        public static final int memowidget=0x7f030004;
+        public static final int login=0x7f030002;
+        public static final int main=0x7f030003;
+        public static final int memoviewer=0x7f030004;
+        public static final int memowidget=0x7f030005;
     }
     public static final class string {
         public static final int app_name=0x7f060001;
+        public static final int confirm=0x7f060003;
         public static final int hello=0x7f060000;
         public static final int helpdoc=0x7f060002;
     }

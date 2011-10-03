@@ -33,9 +33,9 @@ public class FileUtils {
 		File f=new File(path); //"/sdcard/DoodleMemo/saved/test"
 		try{ 
 		        
-			if(!f.exists())//���ж�Ŀ¼�Ƿ���ڣ� 
+			if(!f.exists())
 			{
-				return f.mkdirs();//Ŀ¼�����ڽ���Ŀ¼�� 
+				return f.mkdirs();
 				
 			}
 			
@@ -49,7 +49,7 @@ public class FileUtils {
 	}
 	public static boolean DeleteAllFiles(String path)
 	{
-		File   f=new   File(path);//���ļ�Ŀ¼ ����"/sdcard/memo/saved/"
+		File   f=new   File(path);// path "/sdcard/memo/saved/"
 		boolean del=false;
 		try{ 
 			if(f.exists())
@@ -78,7 +78,6 @@ public class FileUtils {
 	{
 		FileOutputStream out;
 		try {
-			//Ч������ ��֪����ô��
 			for(int i=0;i<4;i++)
 			{
 				out = new FileOutputStream(path+"/memoybg"+Integer.toString(i)+".png");
@@ -112,8 +111,7 @@ public class FileUtils {
 	}
 	public static Bitmap readToNormal(String filepath,int width,int height,int numsample) {
 		
-		ArrayList<Path> pathlist=new ArrayList<Path>();
-        final Bitmap bitmap = Bitmap.createBitmap(300,300 , Bitmap.Config.ARGB_8888);
+        final Bitmap bitmap = Bitmap.createBitmap(195,195 , Bitmap.Config.ARGB_8888);
         final Canvas canvas = new Canvas(bitmap);
         final Paint paint = new Paint();
         
@@ -130,7 +128,7 @@ public class FileUtils {
 			int j=0,k=0;
 			try {
 				int count=in.readInt();
-				for(int i=0;i<count;i++)
+				for(int i=1;i<=count;i++)
 				{
 					 // not use but read
 					 in.readInt();
@@ -139,17 +137,22 @@ public class FileUtils {
 			         in.readInt();
 			         in.readInt();
 			         in.readFloat();
+			         
 			         //read path
-			        Path tempPath=Gesture.deserialize(in).toNormalSize(width, height, numsample);
-			        
-		        	tempPath.offset(50*k,10+j);
-		        	if(i%6==0&&i!=0){
-		        		j+=50;
-		        	}
-		        	k=i%6;
-		        	canvas.drawPath(tempPath, paint);
-					
-				}
+			         Path tempPath=Gesture.deserialize(in).toNormalSize(width, height, numsample);
+			         //offset path
+		        	 if(i%5==0){
+		        		 k=i%5;
+		        	 	 tempPath.offset((width+7)*k+8.5f,8.5f+j);
+			        	 canvas.drawPath(tempPath, paint);
+			        	 j+=(width+10);
+			        	 continue;
+		        	 }
+		        	 k=i%5;
+		        	 tempPath.offset((width+7)*k+8.5f,8.5f+j);
+		        	 canvas.drawPath(tempPath, paint);
+
+			  }
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -157,17 +160,7 @@ public class FileUtils {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
 
-
-        
-
-        	
-
-        	
-        
-		
-		
 		return bitmap;
 	}
 

@@ -3,7 +3,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -63,21 +62,21 @@ public class FirstView extends View {
 		memohistory=new Rect(INILEFT,INITOP+VERTICAL_Y,INIRIGHT,INIBOTTOM+VERTICAL_Y);
 		help=new Rect(INILEFT,INITOP+VERTICAL_Y*2,INIRIGHT,INIBOTTOM+VERTICAL_Y*2);
 		quit=new Rect(INILEFT,INITOP+VERTICAL_Y*3,INIRIGHT,INIBOTTOM+VERTICAL_Y*3);
-		newmemopic=BitmapFactory.decodeResource(getResources(), R.drawable.newmemopic);
-		memohistorypic=BitmapFactory.decodeResource(getResources(), R.drawable.memohistorypic);
-		newmemodpic=BitmapFactory.decodeResource(getResources(), R.drawable.newmemopic);
-		memohistorydpic=BitmapFactory.decodeResource(getResources(), R.drawable.memohistorypic);
-		helppic=BitmapFactory.decodeResource(getResources(), R.drawable.helppic);
-		quitpic=BitmapFactory.decodeResource(getResources(), R.drawable.quitpic);
-		helpdownpic=BitmapFactory.decodeResource(getResources(), R.drawable.helppic);
-		quitdownpic=BitmapFactory.decodeResource(getResources(), R.drawable.quitpic);
+//		newmemopic=BitmapFactory.decodeResource(getResources(), R.drawable.newmemopic);
+//		memohistorypic=BitmapFactory.decodeResource(getResources(), R.drawable.memohistorypic);
+//		newmemodpic=BitmapFactory.decodeResource(getResources(), R.drawable.newmemopic);
+//		memohistorydpic=BitmapFactory.decodeResource(getResources(), R.drawable.memohistorypic);
+//		helppic=BitmapFactory.decodeResource(getResources(), R.drawable.helppic);
+//		quitpic=BitmapFactory.decodeResource(getResources(), R.drawable.quitpic);
+//		helpdownpic=BitmapFactory.decodeResource(getResources(), R.drawable.helppic);
+//		quitdownpic=BitmapFactory.decodeResource(getResources(), R.drawable.quitpic);
 		
 		
 	}
 	public void onDraw(Canvas canvas)
 	{	
 
-		this.setBackgroundResource(R.drawable.mainbg);
+//		this.setBackgroundResource(R.drawable.mainbg);
 		if(buttondown==0)
 		{
 		canvas.drawBitmap(newmemopic, null, newmemo, paint);
