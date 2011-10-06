@@ -32,7 +32,7 @@ public class Display extends View {
     }
     private GestureDetector mGestureDetector;  
     OnViewChanged listener;
-	//屏幕长宽，须根据不同屏幕设置
+	//灞忓箷闀垮锛岄』鏍规嵁涓嶅悓灞忓箷璁剧疆
 	private static int screenwidth=320;		//M9 size 320*480 milestone size 320*569;
 	private static int screenheight=480;
 	private final int WRITE_MODEL=1;
@@ -42,7 +42,7 @@ public class Display extends View {
 	private final int MENU_TRANSLATE=2;
 	private final int MENU_SCALE=3;
 	private final int MENU_ROTATE=4;
-	int MODEL=WRITE_MODEL;//模式切换 书写模式1和绘图模式2
+	int MODEL=WRITE_MODEL;//妯″紡鍒囨崲 涔﹀啓妯″紡1鍜岀粯鍥炬ā寮�
 	ArrayList<Path> drawpath=new ArrayList<Path>();
 	Path mPath=new Path();
 	ArrayList<GestureBox>gesturelist=new ArrayList<GestureBox>();
@@ -56,7 +56,7 @@ public class Display extends View {
 	int cursorstart=0;
 	int previousx,previousy;
 	int menu_x,menu_y;
-	//绘图在bitmap上
+	//缁樺浘鍦╞itmap涓�
 	Bitmap  mBitmap;
 	Bitmap mBackground;
 	Bitmap mMenu;
@@ -96,7 +96,7 @@ public class Display extends View {
         mBitmap = Bitmap.createBitmap(screenwidth, screenheight, Bitmap.Config.ARGB_8888);    
         //mBitmap=Bitmap.createBitmap(BitmapFactory.decodeFile("/sdcard/memo/memopaper/05.jpg"));
         //mBackground=Bitmap.createScaledBitmap(BitmapFactory.decodeFile("/sdcard/memo/memopaper/05.jpg"), screenwidth, screenheight,false); 
-        mBackground=Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.year2), screenwidth, screenheight,false); 
+        mBackground=Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.default_memo), screenwidth, screenheight,false); 
         //backupbitmap=Bitmap.createBitmap(mBitmap);
         mMenu=Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.menu), 180, 180,false); 
         mCanvas = new Canvas(mBitmap);
@@ -105,13 +105,20 @@ public class Display extends View {
         mGestureDetector = new GestureDetector(new MySimpleGesture());  
 			
 	}
-	public void setpaint(Paint paint)
+	public void setPaint(Paint paint)
 	{
 		//mypaint.set(paint);
 		mypaint.setColor(paint.getColor());
 		mypaint.setStrokeWidth(paint.getStrokeWidth());
 		cursorpaint.setColor(paint.getColor());
 		mypaint.setXfermode(null);
+	}
+	public void setPaint(int color,int width){
+		mypaint.setColor(color);
+		mypaint.setStrokeWidth(width);
+		cursorpaint.setColor(color);
+		mypaint.setXfermode(null);
+		
 	}
 	public void AddGesture(Gesture mygesture)
 	{
@@ -203,11 +210,11 @@ public class Display extends View {
 	}
 	public void changebackground(String str)
 	{
-		mBackground.recycle();//清除原有的bitmap
+		mBackground.recycle();//娓呴櫎鍘熸湁鐨刡itmap
 		mBackground=Bitmap.createScaledBitmap(BitmapFactory.decodeFile(str), screenwidth, screenheight,false); 
 		//backupbitmap.recycle();
-	    //backupbitmap=Bitmap.createBitmap(mBitmap);//备份
-	    //mCanvas.setBitmap(mBitmap);//不设置则不能画
+	    //backupbitmap=Bitmap.createBitmap(mBitmap);//澶囦唤
+	    //mCanvas.setBitmap(mBitmap);//涓嶈缃垯涓嶈兘鐢�
 		invalidate();
 	     
 	}

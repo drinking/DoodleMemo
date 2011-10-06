@@ -1,19 +1,18 @@
-﻿package com.android.drawmemo;
-
-
+package com.android.drawmemo;
 
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import com.android.gestureview.ColorPickerDialog;
 import com.android.gestureview.Gesture;
 import com.android.gestureview.GestureOverlayView;
 import com.drinking.utils.FileUtils;
 import com.drinking.utils.GlobalValue;
+import com.drinking.utils.Logger;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -32,8 +31,10 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class CreateMemo extends Activity implements ColorPickerDialog.OnPaintChangedListener ,
+public class CreateMemo extends Activity implements 
 													Display.OnViewChanged{
+	private final int REQUEST_CHANGE_MEMOBG=1;
+	private final int REQUEST_SET_PAINT=2;
     private GestureOverlayView mgestureview;
     private Display displayview;			
     private Gesture mGesture;				
@@ -44,15 +45,18 @@ public class CreateMemo extends Activity implements ColorPickerDialog.OnPaintCha
     Paint mPaint;
     private String fn=null;
     String filepath=null;
+    
+    public Logger log=new Logger("CreateMemo");
 
     public void paintChanged(Paint paint) {
+    	//TODO
     	mPaint.set(paint);
         //mgestureview.setGesturePaint(mPaint);//完全复制会有错误，应该是某个值没设置
     	mgestureview.setGestureColor(paint.getColor());
     	mgestureview.setGestureStrokeWidth(paint.getStrokeWidth());
     	mgestureview.refresh();
         
-        displayview.setpaint(mPaint);
+        displayview.setPaint(mPaint);
     }
     public void viewchanged()
     {
@@ -94,14 +98,20 @@ public class CreateMemo extends Activity implements ColorPickerDialog.OnPaintCha
         mgestureview.refresh();
         
         displayview=(Display)findViewById(R.id.displayview);
-        displayview.setpaint(mPaint);
+        displayview.setPaint(mPaint);
         displayview.addlistener(this);
         hider=findViewById(R.id.hider);
         
         Intent i=this.getIntent();
         filepath=i.getStringExtra("path");
-        if(filepath!=null&&!filepath.equals("nofile"))
+        if(filepath!=null&&!filepath.equals("newfile"))
         {
+			File f=new File(GlobalValue.picsavepath);
+			File []files=f.listFiles();
+			if(files!=null)
+				filepath=files[0].getPath();
+			else
+				return;
         //displayview.changebackground(filepath);
         String path="/sdcard/DoodleMemo/save/dat/"+filepath.substring(filepath.length()-23, filepath.length()-4)+".dat";
         //filepath=filepath+"dat";
@@ -175,7 +185,7 @@ public class CreateMemo extends Activity implements ColorPickerDialog.OnPaintCha
         	   		Toast.makeText(CreateMemo.this, "fail to save", Toast.LENGTH_SHORT).show();
         	   	
         	   	
-        	   	Intent intent=new Intent("android.appwidget.action.SENDTOUPDATE");
+        	   	Intent intent=new Intent("android.appwidget.action.UPDATE_DESK_MEMO");
     	   		CreateMemo.this.sendBroadcast(intent);
         	   
         	  	CreateMemo.this.finish();
@@ -243,7 +253,11 @@ public class CreateMemo extends Activity implements ColorPickerDialog.OnPaintCha
     }
     public void setpaint(View v)
     {
-    	new ColorPickerDialog(this, this, mPaint).show();
+    	//TODO
+    	Intent i=new Intent(CreateMemo.this,Paltte.class);
+    	startActivityForResult(i,REQUEST_SET_PAINT);
+    	
+//    	new ColorPickerDialog(this, this, mPaint).show();
     }
     private static final int SWITCH_MENU_ID = Menu.FIRST;
     private static final int BGCHANGE_MENU_ID = Menu.FIRST + 1;
@@ -284,7 +298,7 @@ public class CreateMemo extends Activity implements ColorPickerDialog.OnPaintCha
             case BGCHANGE_MENU_ID:
             	Intent serverIntent = new Intent(this, MemoViewer.class);
                 //startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
-            	startActivityForResult(serverIntent,10);
+            	startActivityForResult(serverIntent,REQUEST_CHANGE_MEMOBG);
                 return true;
             case CLEAR_MENU_ID:
             	displayview.Clear();
@@ -294,7 +308,11 @@ public class CreateMemo extends Activity implements ColorPickerDialog.OnPaintCha
             	save();
                 return true;
             case BRUSH_MENU_ID:
-            	new ColorPickerDialog(this, this, mPaint).show();
+            	
+//            	new ColorPickerDialog(this, this, mPaint).show();
+            	Intent i=new Intent(CreateMemo.this,Paltte.class);
+            	startActivityForResult(i,REQUEST_SET_PAINT);
+            	
                 return true;
             case MODEL_MENU_ID:
             	switch(displayview.changemodel())
@@ -331,11 +349,34 @@ public class CreateMemo extends Activity implements ColorPickerDialog.OnPaintCha
     }  
     protected void onActivityResult(int requestCode, int resultCode,   
     		                                    Intent data){   
-    		        switch (resultCode){   
-    		        case RESULT_OK:   
+    		        switch (requestCode){
+    		        
+    		        case REQUEST_CHANGE_MEMOBG: 
+    		        	if(resultCode==RESULT_OK){
     		           Bundle b = data.getExtras();         
     		           String path = b.getString("MEMOPATH");
     		           displayview.changebackground(path);
+    		        	}
+    		           break;
+    		        case REQUEST_SET_PAINT:
+    		        	if(resultCode==RESULT_OK){
+    		        		
+    		        		Bundle bundle=data.getExtras();
+    		        		int color=bundle.getInt("Color");
+    		        		int width=bundle.getInt("Width");
+    		        		if(color!=-1){
+    		            	mgestureview.setGestureColor(color);
+    		                displayview.setPaint(color,width);
+    		        		}
+    		        		if(width!=-1)
+    		            	mgestureview.setGestureStrokeWidth(width);
+    		        		
+    		            	mgestureview.refresh();
+    		            	
+    		        		
+    		        		
+    		        	}
+    		        	break;
     		               
     		       
     		        }   

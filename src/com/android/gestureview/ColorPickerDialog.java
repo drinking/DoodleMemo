@@ -242,11 +242,13 @@ public class ColorPickerDialog extends Dialog {
                     	if(event.getX()-previousx>10)
                     	{
                     		mCenterPaint.setStrokeWidth(mCenterPaint.getStrokeWidth()+1);
+                    		Log.d("stroke width", "["+mCenterPaint.getStrokeWidth()+"]");
                     		previousx=event.getX();
                     	}
                     	else if(event.getX()-previousx<-10)
                     	{
                     		mCenterPaint.setStrokeWidth(mCenterPaint.getStrokeWidth()-1);
+                    		Log.d("stroke width", "["+mCenterPaint.getStrokeWidth()+"]");
                     		previousx=event.getX();
                     	}
                     	invalidate();

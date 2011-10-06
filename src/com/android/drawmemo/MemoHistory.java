@@ -33,6 +33,11 @@ public class MemoHistory extends Activity implements Gallery.OnItemClickListener
         setContentView(R.layout.memoviewer);
         Gallery g=(Gallery)findViewById(R.id.Gallery01);
         File f=new File(GlobalValue.picsavepath);
+        	if(!f.exists()){
+          	  Toast.makeText(this, "文件不存在...", Toast.LENGTH_SHORT).show();
+        	  MemoHistory.this.finish();
+        	  return;
+        	};
         g.setAdapter(new ImageAdapter(this, getSD(f)));// ���� Gallery �ؼ���ͼƬԴ
         g.setOnItemClickListener(this);
        
@@ -60,7 +65,6 @@ public class MemoHistory extends Activity implements Gallery.OnItemClickListener
         if(file.isDirectory())
         {
       	  it.addAll(getSD(file));
-      	  //getSD(file);
         }
        }
      
@@ -84,34 +88,14 @@ public class MemoHistory extends Activity implements Gallery.OnItemClickListener
       }
       return re; 
     }
-//    public boolean onCreateOptionsMenu(Menu menu) 
-//    {  
-//    	menu.add(0,0,0,"����");   
-//    	return true;  
-//    } 
     public void onItemClick (AdapterView<?> parent, View view, 
       		 int position, long id) {
 
-       /*	Intent intent=new Intent(Intent.ACTION_SEND);
-       	intent.setType("img/*");
-       	Uri imageuri=Uri.fromFile(files[position]);
-       	intent.putExtra(Intent.EXTRA_STREAM, imageuri);
-       	intent.setType("image/*");
-       	//startActivity(Intent.createChooser(intent, getTitle()));
-       	startActivity(Intent.createChooser(intent, "send to :"));//�ڶ��������ǶԻ���ı���
-       	*/
        	fileindex=position;
        	new AlertDialog.Builder(MemoHistory.this)
         .setTitle("操作")
         .setItems(R.array.select_dialog_items, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-
-                /* User clicked so do some stuff */
-            	
-                /*String[] items = getResources().getStringArray(R.array.select_dialog_items);
-                new AlertDialog.Builder(MemoHistory.this)
-                        .setMessage("You selected: " + which + " , " + items[which])
-                        .show();*/
             	select(which);
             }
         })
@@ -138,8 +122,7 @@ public class MemoHistory extends Activity implements Gallery.OnItemClickListener
            	Uri imageuri=Uri.fromFile(files[fileindex]);
            	intent.putExtra(Intent.EXTRA_STREAM, imageuri);
            	intent.setType("image/*");
-           	//startActivity(Intent.createChooser(intent, getTitle()));
-           	startActivity(Intent.createChooser(intent, "send to :"));//�ڶ��������ǶԻ���ı���
+           	startActivity(Intent.createChooser(intent, "send to :"));
     		break;
     	case 2:
     		Intent i=new Intent(this,CreateMemo.class);
@@ -152,7 +135,7 @@ public class MemoHistory extends Activity implements Gallery.OnItemClickListener
     	}
     }
     @Override     
-    public void onBackPressed() {//��д���˼�
+    public void onBackPressed() {
     	Intent intent=new Intent("android.appwidget.action.SENDTOUPDATE");
    		this.sendBroadcast(intent);
    		super.onBackPressed();

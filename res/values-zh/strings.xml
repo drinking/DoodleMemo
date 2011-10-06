@@ -17,4 +17,10 @@
     						 			Drinking
     						 </string>
 <string name="confirm">确定</string>
+<string name="width5">细</string>
+<string name="width10">普通</string>
+<string name="width20">粗</string>
+<string name="width40">很粗</string>
+<string name="color_setting">颜色选择</string>
+<string name="width_setting">粗细选择</string>
 </resources>

@@ -11,7 +11,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,7 +44,12 @@ public class MemoViewer extends Activity implements Gallery.OnItemClickListener{
         
         Gallery g=(Gallery)findViewById(R.id.Gallery01);
         File f=new File(GlobalValue.mbgpath);
-        g.setAdapter(new ImageAdapter(this, getSD(f)));// ÉèÖÃ Gallery ¿Ø¼şµÄÍ¼Æ¬Ô´
+        if(!f.exists()){
+        	Toast.makeText(MemoViewer.this, "æ–‡ä»¶ä¸å­˜åœ¨...", Toast.LENGTH_SHORT).show();
+        	this.finish();
+        	return;
+        }
+        g.setAdapter(new ImageAdapter(this, getSD(f)));// ï¿½ï¿½ï¿½ï¿½ Gallery ï¿½Ø¼ï¿½ï¿½ï¿½Í¼Æ¬Ô´
         g.setOnItemClickListener(this);
        
 
@@ -53,8 +57,6 @@ public class MemoViewer extends Activity implements Gallery.OnItemClickListener{
     }
     public void onItemClick (AdapterView<?> parent, View view, 
    		 int position, long id) {
-    	
-     // TODO Auto-generated method stub
      String path=files[position].getPath();
      Intent i = new Intent();   
      Bundle b = new Bundle();   
@@ -68,12 +70,10 @@ public class MemoViewer extends Activity implements Gallery.OnItemClickListener{
     
     private List<String> getSD(File fi)
     {
-      /* Éè¶¨Ä¿Ç°Ëù?Â·¾¶ */
       List<String> it=new ArrayList<String>();      
       //File f=new File("/sdcard");  
       files=fi.listFiles();
    
-      /* ½«ËùÓĞµµ°¸ØÏÕÉArrayListÖĞ */
       for(int i=0;i<files.length;i++)
       {
         File file=files[i];

@@ -24,8 +24,8 @@ public class Memo extends Activity implements OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);//ÉèÖÃÃ»ÓÐtitle
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,//ÉèÖÃÈ«ÆÁÏÔÊ¾ 
+        requestWindowFeature(Window.FEATURE_NO_TITLE);//ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½title
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,//ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½Ê¾ 
         		WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.login);        
         
@@ -38,16 +38,16 @@ public class Memo extends Activity implements OnClickListener{
         help.setOnClickListener(this);
         quit.setOnClickListener(this);
         
-        if(!FileUtils.Exists(GlobalValue.mbgpath))//µÚÒ»´Îµ¼Èë×ÊÔ´
+        if(!FileUtils.Exists(GlobalValue.mbgpath))//ï¿½ï¿½Ò»ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½Ô´
         {
         FileUtils.CreateFolder(GlobalValue.mbgpath);
         FileUtils.ResourceToSD(this.getResources(),GlobalValue.mbgpath);
         }
-        if(!FileUtils.Exists(GlobalValue.picsavepath))//´´½¨pic´¢´æÎÄ¼þ¼Ð
+        if(!FileUtils.Exists(GlobalValue.picsavepath))//ï¿½ï¿½ï¿½ï¿½picï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
         {
         	FileUtils.CreateFolder(GlobalValue.picsavepath);
         }
-        if(!FileUtils.Exists(GlobalValue.datsavepath))//´´½¨dat´¢´æÎÄ¼þ¼Ð
+        if(!FileUtils.Exists(GlobalValue.datsavepath))//ï¿½ï¿½ï¿½ï¿½datï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
         {
         	FileUtils.CreateFolder(GlobalValue.datsavepath);
         }
@@ -57,7 +57,7 @@ public class Memo extends Activity implements OnClickListener{
     {
 
     	Intent intent=new Intent(this,CreateMemo.class);
-    	intent.putExtra("path", "nofile");
+    	intent.putExtra("path", "newfile");
     	startActivity(intent);
     	
     }
@@ -78,16 +78,18 @@ public class Memo extends Activity implements OnClickListener{
 			ViewHistory();
 			break;
 		case R.id.help_button:
-			new AlertDialog.Builder(Memo.this)
-            .setTitle("Doodle Memo")
-            .setMessage(R.string.helpdoc)
-            .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener(){
-				public void onClick(DialogInterface dialog, int which) {
-					
-					
-				}
-	    		
-	    	}).show();
+//			new AlertDialog.Builder(Memo.this)
+//            .setTitle("Doodle Memo")
+//            .setMessage(R.string.helpdoc)
+//            .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener(){
+//				public void onClick(DialogInterface dialog, int which) {
+//					
+//					
+//				}
+//	    		
+//	    	}).show();
+			Intent i=new Intent(Memo.this,Help.class);
+			startActivity(i);
 			break;
 		case R.id.quit_button:
 			Memo.this.finish();

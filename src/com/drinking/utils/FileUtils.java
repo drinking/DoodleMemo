@@ -76,19 +76,19 @@ public class FileUtils {
 	}
 	public static boolean ResourceToSD(Resources res,String path)
 	{
-		FileOutputStream out;
-		try {
-			for(int i=0;i<4;i++)
-			{
-				out = new FileOutputStream(path+"/memoybg"+Integer.toString(i)+".png");
-				BitmapFactory.decodeResource(res, R.drawable.year1+i).compress(Bitmap.CompressFormat.PNG, 90, out);
-			}
-			
-			return true;
-		} catch (FileNotFoundException e) {
-			
-			e.printStackTrace();
-		}
+//		FileOutputStream out;
+//		try {
+//			for(int i=0;i<4;i++)
+//			{
+//				out = new FileOutputStream(path+"/memoybg"+Integer.toString(i)+".png");
+//				BitmapFactory.decodeResource(res, R.drawable.year1+i).compress(Bitmap.CompressFormat.PNG, 90, out);
+//			}
+//			
+//			return true;
+//		} catch (FileNotFoundException e) {
+//			
+//			e.printStackTrace();
+//		}
 		
 		return false;
 	}
@@ -109,6 +109,14 @@ public class FileUtils {
 		File file=new File(path);
 		return file;
 	}
+	/**
+	 * 
+	 * @param filepath 
+	 * @param width single word size
+	 * @param height
+	 * @param numsample points number consist
+	 * @return
+	 */
 	public static Bitmap readToNormal(String filepath,int width,int height,int numsample) {
 		
         final Bitmap bitmap = Bitmap.createBitmap(195,195 , Bitmap.Config.ARGB_8888);
@@ -142,13 +150,12 @@ public class FileUtils {
 			         Path tempPath=Gesture.deserialize(in).toNormalSize(width, height, numsample);
 			         //offset path
 		        	 if(i%5==0){
-		        		 k=i%5;
-		        	 	 tempPath.offset((width+7)*k+8.5f,8.5f+j);
+		        	 	 tempPath.offset((width+7)*4+8.5f,8.5f+j);
 			        	 canvas.drawPath(tempPath, paint);
 			        	 j+=(width+10);
 			        	 continue;
 		        	 }
-		        	 k=i%5;
+		        	 k=(i-1)%5;
 		        	 tempPath.offset((width+7)*k+8.5f,8.5f+j);
 		        	 canvas.drawPath(tempPath, paint);
 

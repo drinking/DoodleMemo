@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+  android:background="@drawable/setting_bg">
+  
+  <TextView android:text="@string/color_setting" 
+  			android:id="@+id/TextView01" 
+  			android:layout_width="fill_parent" 
+  			android:layout_height="wrap_content"
+  			android:textColor="#ffffffff"
+  			android:layout_marginTop="95dp"
+  			android:layout_marginLeft="20dp"
+  			>
+  </TextView>
+  <LinearLayout
+  		   android:layout_width="fill_parent"
+  		   android:layout_height="wrap_content"
+  		   android:gravity="center"
+  		   android:layout_margin="10dp">
+  		<ImageView android:id="@+id/color_black" 
+		   android:layout_width="wrap_content" 
+		   android:layout_height="wrap_content"
+		   android:layout_margin="2dp"
+		   android:background="@drawable/paltte_black">
+		   </ImageView>
+		<ImageView android:id="@+id/color_white" 
+		   android:layout_width="wrap_content" 
+		   android:background="@drawable/paltte_white"
+		   android:layout_margin="2dp"
+		   android:layout_height="wrap_content">
+		   </ImageView>
+		<ImageView android:id="@+id/color_gray" 
+		   android:layout_width="wrap_content" 
+		   android:layout_height="wrap_content"
+		   android:layout_margin="2dp"
+		   android:background="@drawable/paltte_gray">
+		   </ImageView>
+		   	<ImageView android:id="@+id/color_purple" 
+		   android:layout_width="wrap_content" 
+		   android:layout_height="wrap_content"
+		   		   android:layout_margin="2dp"
+		   
+		   android:background="@drawable/paltte_purple">
+		   </ImageView>
+		   	<ImageView android:id="@+id/color_blue" 
+		   android:layout_width="wrap_content" 
+		   android:layout_height="wrap_content"
+		   		   android:layout_margin="2dp"
+		   
+		   android:background="@drawable/paltte_blue">
+		   </ImageView>
+		   </LinearLayout>
+		     <LinearLayout
+  		   android:layout_width="fill_parent"
+  		   android:layout_height="wrap_content"
+  		   android:gravity="center"
+  		   android:layout_margin="10dp">
+  		<ImageView android:id="@+id/color_light_blue" 
+		   android:layout_width="wrap_content" 
+		   android:layout_height="wrap_content"
+		   android:layout_margin="2dp"
+		   android:background="@drawable/paltte_lightblue">
+		   </ImageView>
+		<ImageView android:id="@+id/color_green" 
+		   android:layout_width="wrap_content" 
+		   android:background="@drawable/paltte_green"
+		   android:layout_margin="2dp"
+		   android:layout_height="wrap_content">
+		   </ImageView>
+		<ImageView android:id="@+id/color_yellow" 
+		   android:layout_width="wrap_content" 
+		   android:layout_height="wrap_content"
+		   android:layout_margin="2dp"
+		   android:background="@drawable/paltte_yellow">
+		   </ImageView>
+		   	<ImageView android:id="@+id/color_orange" 
+		   android:layout_width="wrap_content" 
+		   android:layout_height="wrap_content"
+		   		   android:layout_margin="2dp"
+		   
+		   android:background="@drawable/paltte_orange">
+		   </ImageView>
+		   	<ImageView android:id="@+id/color_red" 
+		   android:layout_width="wrap_content" 
+		   android:layout_height="wrap_content"
+		   		   android:layout_margin="2dp"
+		   
+		   android:background="@drawable/paltte_red">
+		   </ImageView>
+		   </LinearLayout>
+		   <!-- 
+		   <LinearLayout android:orientation="vertical"
+		   				 android:layout_height="wrap_content"
+		   				 android:layout_width="fill_parent">
+		   				 
+		 <ImageView android:id="@+id/stroke_width_5" 
+		   			android:layout_width="200dp" 
+		 			android:layout_height="40dp"
+		   			android:layout_margin="2dp"
+		   			android:layout_gravity="center"/>
+	    <ImageView android:id="@+id/stroke_width_10" 
+		   			android:layout_width="200dp" 
+		 			android:layout_height="40dp"
+		   			android:layout_margin="2dp"
+		   			android:layout_gravity="center"/>
+		<ImageView android:id="@+id/stroke_width_20" 
+		   			android:layout_width="200dp" 
+		 			android:layout_height="40dp"
+		   			android:layout_margin="2dp"
+		   			android:layout_gravity="center"/>
+		<ImageView android:id="@+id/stroke_width_40" 
+		   			android:layout_width="200dp" 
+		 			android:layout_height="40dp"
+		   			android:layout_margin="2dp"
+		   			android:layout_gravity="center"/>
+		   			
+</LinearLayout>
+
+
+
+
+
+-->
+  <TextView android:text="@string/width_setting" 
+  			android:id="@+id/TextView01" 
+  			android:layout_width="fill_parent" 
+  			android:layout_height="wrap_content"
+  			android:textColor="#ffffffff"
+  			android:layout_marginLeft="20dp"
+  			>
+  </TextView>
+<RadioGroup android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:gravity="center"
+			android:layout_marginBottom="20dp"
+								>
+		<RadioGroup android:layout_width="fill_parent"
+					  android:layout_height="wrap_content"
+					  android:orientation="horizontal"
+					  android:gravity="center"
+					  android:id="@+id/width_group1">
+								
+		   <RadioButton android:text="@string/width5" 
+		   				android:id="@+id/stroke_width_5" 
+		   				android:layout_width="wrap_content" 		   				
+		   				android:layout_height="wrap_content"
+		   				android:layout_margin="10dp"
+		   				style="@style/MyCheckBox">
+		   				</RadioButton>
+		  <RadioButton android:text="@string/width10" 
+		   				android:id="@+id/stroke_width_10" 
+		   				android:layout_width="wrap_content" 		   				
+		   				android:layout_height="wrap_content"
+		   				android:layout_margin="10dp"
+		   				style="@style/MyCheckBox">
+		   				</RadioButton>
+		   				</RadioGroup>
+		  <RadioGroup android:layout_width="fill_parent"
+					  android:layout_height="wrap_content"
+					  android:orientation="horizontal"
+					  android:gravity="center"
+					  android:id="@+id/width_group2">
+		  <RadioButton android:text="@string/width20" 
+		   				android:id="@+id/stroke_width_20" 
+		   				android:layout_width="wrap_content" 		   				
+		   				android:layout_height="wrap_content"
+		   				android:layout_margin="10dp"
+		   				style="@style/MyCheckBox">
+		   				</RadioButton>
+		  <RadioButton android:text="@string/width40" 
+		   				android:id="@+id/stroke_width_40" 
+		   				android:layout_width="wrap_content" 		   				
+		   				android:layout_height="wrap_content"
+		   				android:layout_margin="10dp"
+		   				style="@style/MyCheckBox">
+		   				</RadioButton>
+		   			</RadioGroup>
+		   				</RadioGroup>
+		   				
+		   			   <LinearLayout android:layout_width="fill_parent"
+		   				 android:layout_height="wrap_content"
+		   				 android:orientation="horizontal"
+		   				 android:gravity="center"
+		   				 android:layout_margin="3dp">
+		   				 
+		   				 
+		   			   <Button 
+		   			   		   android:id="@+id/confirm" 
+		   			   		   android:layout_width="wrap_content" 
+		   			   		   android:layout_height="wrap_content"
+		   			   		   android:background="@drawable/confirm_selector">
+		   			   		   </Button>
+		   			   <Button
+		   			   		   android:id="@+id/cancel" 
+		   			   		   android:layout_width="wrap_content" 
+		   			   		   android:layout_height="wrap_content"
+		   			   		   android:background="@drawable/cancel_selector"
+		   			   		   android:layout_marginLeft="5dp">
+		   			   		   </Button>
+		   				 
+	 
+		   				 </LinearLayout>
+
+
+</LinearLayout>

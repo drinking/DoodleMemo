@@ -17,4 +17,13 @@
     						 			Drinking
     						 </string>
 <string name="confirm">OK</string>
+<string name="width5">width5</string>
+<string name="width10">width10</string>
+<string name="width20">width20</string>
+<string name="width40">width40</string>
+<string name="color_setting">color setting</string>
+<string name="width_setting">width setting</string>
+<style name="MyCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+<item name="android:button">@drawable/checkbox_selector</item>
+</style>
 </resources>

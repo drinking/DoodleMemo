@@ -3,7 +3,9 @@
       package="com.android.drawmemo"
       android:versionCode="1"
       android:versionName="1.0">
-    <application android:icon="@drawable/icon" android:label="@string/app_name">
+    <application android:icon="@drawable/icon" android:label="@string/app_name"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+    >
         <activity android:name=".Memo"
                   android:label="@string/app_name">
             <intent-filter>
@@ -15,14 +17,17 @@
         </activity>
          <activity android:name=".MemoHistory">
         </activity>
+        <activity android:name=".Paltte">
+        </activity>
 		 <activity android:name=".MemoViewer"></activity> 
+		 <activity android:name=".Help"></activity>
 		<receiver android:name=".MemoWidgetProider">
 		<meta-data android:name="android.appwidget.provider"
 		 		   android:resource="@xml/appwidget_provider"/>
 		<intent-filter>
 			<action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-			<action android:name="android.appwidget.action.SENDTOUPDATE"/>
-			<action android:name="android.appwidget.action.SENDTOUPDATE2"/>
+			<action android:name="android.appwidget.action.UPDATE_DESK_MEMO"/>
+			<action android:name="android.appwidget.action.VIEW_MEMO_DETAIL"/>
 		</intent-filter>
 	</receiver>
     </application>

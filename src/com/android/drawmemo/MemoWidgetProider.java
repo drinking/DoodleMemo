@@ -20,7 +20,6 @@ import android.widget.RemoteViews;
 
 public class MemoWidgetProider extends AppWidgetProvider {
 
-	private final String NEXT_MEMO="android.appwidget.action.nextmemo";
 	public void onUpdate(Context context,AppWidgetManager appWidgetManager,int[] appWidgetIds)
 	{	
 		super.onUpdate(context, appWidgetManager, appWidgetIds); 
@@ -31,9 +30,15 @@ public class MemoWidgetProider extends AppWidgetProvider {
 		 	//if not call the super function,the onUpdate() function will not responsible
 		 	super.onReceive(context, intent);
 		 	
-		 	if(intent.getAction().equals("android.appwidget.action.SENDTOUPDATE2")) {
+		 	if(intent.getAction().equals("android.appwidget.action.VIEW_MEMO_DETAIL")) {
 		 		
+
+		 		
+		 	} else if(intent.getAction().equals("android.appwidget.action.UPDATE_DESK_MEMO")){
 				File f=new File(GlobalValue.datsavepath);
+				if(!f.exists())
+					return;
+				
 				File []files=f.listFiles();
 				Bitmap bitmap=null;
 				if(files.length>0) {
@@ -41,45 +46,44 @@ public class MemoWidgetProider extends AppWidgetProvider {
 				}
 		 		RemoteViews remoteview=new RemoteViews(context.getPackageName(),R.layout.memowidget);
 		 		if(bitmap!=null) {
-		 		remoteview.setImageViewBitmap(R.id.NewMemo, bitmap);
+		 		remoteview.setImageViewBitmap(R.id.Desk_Memo, bitmap);
 		 		}
 		 		AppWidgetManager appWidgetManager=AppWidgetManager.getInstance(context);
-				appWidgetManager.updateAppWidget(new ComponentName(context,MemoWidgetProider.class), remoteview);
-		 		
-		 	} else {
+				appWidgetManager.updateAppWidget(new ComponentName(context,MemoWidgetProider.class), remoteview);	
+		 	}else {
 		 		
 		 		updateMemo(context);
 		 	}
 	    }  
 	 
 	 private void updateMemo(Context context)
-	 {
-		
-		 
+	 { 
 	        RemoteViews remoteview=new RemoteViews(context.getPackageName(),R.layout.memowidget);
-	       
-			File f=new File(GlobalValue.picsavepath);
-			File []files=f.listFiles();
-			if(files.length>0) {
-				/*
-			Bitmap mbitmap=BitmapFactory.decodeFile(files[0].getPath());
-			remoteview.setImageViewBitmap(R.id.ImageView01, mbitmap);
-			remoteview.setImageViewResource(R.id.NewMemo, R.drawable.year2);
-			Intent myintent = new Intent(context, CreateMemo.class);
-			myintent.putExtra("path", files[0].getPath());
-			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, myintent,PendingIntent.FLAG_UPDATE_CURRENT);
-			remoteview.setOnClickPendingIntent(R.id.ImageView01, pendingIntent);
-			*/
-//			Intent nintent = new Intent(context, CreateMemo.class);
-    	   	Intent nintent=new Intent("android.appwidget.action.SENDTOUPDATE2");
 
-			//int requestCode set 1,so that pendingintent won't use the same intent
-			PendingIntent npendingintent = PendingIntent.getBroadcast(context, 1, nintent,0);
-			remoteview.setOnClickPendingIntent(R.id.NewMemo, npendingintent);
+			//implement view detail function
 			
+			Intent viewMemoIntent = new Intent(context, CreateMemo.class);
+			viewMemoIntent.putExtra("path", "viewDetail");
+			PendingIntent viewPendingIntent = PendingIntent.getActivity(context, 0, viewMemoIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+			remoteview.setOnClickPendingIntent(R.id.Desk_Memo, viewPendingIntent);
+			
+			//int requestCode set 1,so that pendingintent won't use the same intent
+			//implement create new memo function
+			
+			Intent newMemoIntent = new Intent(context, CreateMemo.class);
+//			newMemoIntent.putExtra("path", "newfile");
+			PendingIntent newPendingIntent = PendingIntent.getActivity(context, 1, newMemoIntent,0);
+			remoteview.setOnClickPendingIntent(R.id.desk_new_button, newPendingIntent);
+			
+			//init desk View
+			Intent updateViewIntent=new Intent("android.appwidget.action.UPDATE_DESK_MEMO");
+			context.sendBroadcast(updateViewIntent);
+			
+			
+			//update widget
 			AppWidgetManager appWidgetManager=AppWidgetManager.getInstance(context);
 			appWidgetManager.updateAppWidget(new ComponentName(context,MemoWidgetProider.class), remoteview);
-			} 
+			
 	 }
 	
 }
