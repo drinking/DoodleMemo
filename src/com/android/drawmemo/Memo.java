@@ -24,9 +24,6 @@ public class Memo extends Activity implements OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);//����û��title
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,//����ȫ����ʾ 
-        		WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.login);        
         
         newMemo=(Button)findViewById(R.id.new_memo_button);

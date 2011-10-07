@@ -3,27 +3,17 @@ package com.android.drawmemo;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.drinking.drawmemo.ui.GalleryFlow;
+import com.drinking.drawmemo.ui.ImageAdapter;
 import com.drinking.utils.GlobalValue;
-
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Gallery;
-import android.widget.ImageView;
 import android.widget.Toast;
-
-
 
 public class MemoViewer extends Activity implements Gallery.OnItemClickListener{
     /** Called when the activity is first created. */
@@ -32,24 +22,19 @@ public class MemoViewer extends Activity implements Gallery.OnItemClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
-        	WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.memoviewer);
         
-        int a=0;
-        
-        for(int i=0;i<10;++i)
-        	a+=i;
-        
-        Gallery g=(Gallery)findViewById(R.id.Gallery01);
         File f=new File(GlobalValue.mbgpath);
         if(!f.exists()){
         	Toast.makeText(MemoViewer.this, "文件不存在...", Toast.LENGTH_SHORT).show();
         	this.finish();
         	return;
         }
-        g.setAdapter(new ImageAdapter(this, getSD(f)));// ���� Gallery �ؼ���ͼƬԴ
+        ImageAdapter adapter=new ImageAdapter(this,getSD(f));
+        adapter.createReflectedImages();
+        
+        GalleryFlow g=(GalleryFlow)findViewById(R.id.Gallery01);
+        g.setAdapter(adapter);
         g.setOnItemClickListener(this);
        
 
@@ -71,7 +56,6 @@ public class MemoViewer extends Activity implements Gallery.OnItemClickListener{
     private List<String> getSD(File fi)
     {
       List<String> it=new ArrayList<String>();      
-      //File f=new File("/sdcard");  
       files=fi.listFiles();
    
       for(int i=0;i<files.length;i++)
@@ -82,7 +66,6 @@ public class MemoViewer extends Activity implements Gallery.OnItemClickListener{
         if(file.isDirectory())
         {
       	  it.addAll(getSD(file));
-      	  //getSD(file);
         }
         }
       return it;
@@ -106,39 +89,39 @@ public class MemoViewer extends Activity implements Gallery.OnItemClickListener{
       return re; 
     }
 }
-class ImageAdapter extends BaseAdapter {  
-	 private Context mContext; //define Context  
-	 private List<String>lis; 
-	 public ImageAdapter(Context c,List<String>li) { //define ImageAdapter  
-	        mContext = c;  
-	        lis=li;
-	    }  
-	  
-	    //get the picture number  
-	    public int getCount() {  
-	    	
-	        return lis.size();  
-	    }  
-	     
-	    public Object getItem(int position) {  
-	        return position;  
-	    }  
-	  
-	    public long getItemId(int position) {  
-	        return position;  
-	    }  
-	  
-	    public View getView(int position, View convertView, ViewGroup parent) 
-	    {  
-	        ImageView i = new ImageView(mContext);  
-	        Bitmap bm = BitmapFactory.decodeFile(lis.
-                    get(position).toString());
-	        i.setImageBitmap(bm);
-	        //i.setImageResource(mImageIds[position]);//set resource for the imageView  
-	        i.setLayoutParams(new Gallery.LayoutParams(150,266));//layout  
-	        i.setScaleType(ImageView.ScaleType.FIT_XY);//set scale type  
-	        return i;  
-	    }  
-
-	}  
+//class ImageAdapter extends BaseAdapter {  
+//	 private Context mContext; //define Context  
+//	 private List<String>lis; 
+//	 public ImageAdapter(Context c,List<String>li) { //define ImageAdapter  
+//	        mContext = c;  
+//	        lis=li;
+//	    }  
+//	  
+//	    //get the picture number  
+//	    public int getCount() {  
+//	    	
+//	        return lis.size();  
+//	    }  
+//	     
+//	    public Object getItem(int position) {  
+//	        return position;  
+//	    }  
+//	  
+//	    public long getItemId(int position) {  
+//	        return position;  
+//	    }  
+//	  
+//	    public View getView(int position, View convertView, ViewGroup parent) 
+//	    {  
+//	        ImageView i = new ImageView(mContext);  
+//	        Bitmap bm = BitmapFactory.decodeFile(lis.
+//                    get(position).toString());
+//	        i.setImageBitmap(bm);
+//	        //i.setImageResource(mImageIds[position]);//set resource for the imageView  
+//	        i.setLayoutParams(new Gallery.LayoutParams(150,266));//layout  
+//	        i.setScaleType(ImageView.ScaleType.FIT_XY);//set scale type  
+//	        return i;  
+//	    }  
+//
+//	}  
 

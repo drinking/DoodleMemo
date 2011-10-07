@@ -76,19 +76,20 @@ public class FileUtils {
 	}
 	public static boolean ResourceToSD(Resources res,String path)
 	{
-//		FileOutputStream out;
-//		try {
-//			for(int i=0;i<4;i++)
-//			{
-//				out = new FileOutputStream(path+"/memoybg"+Integer.toString(i)+".png");
-//				BitmapFactory.decodeResource(res, R.drawable.year1+i).compress(Bitmap.CompressFormat.PNG, 90, out);
-//			}
-//			
-//			return true;
-//		} catch (FileNotFoundException e) {
-//			
-//			e.printStackTrace();
-//		}
+		int[] drawableIds={R.drawable.memo_paper1,R.drawable.memo_paper2,R.drawable.memo_paper3,R.drawable.memo_paper4,R.drawable.memo_paper5,R.drawable.memo_paper6};
+		FileOutputStream out;
+		try {
+			for(int i=0;i<drawableIds.length;i++)
+			{
+				out = new FileOutputStream(path+"/memoybg"+Integer.toString(i)+".png");
+				BitmapFactory.decodeResource(res, drawableIds[i]).compress(Bitmap.CompressFormat.PNG, 90, out);
+			}
+			
+			return true;
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
 		
 		return false;
 	}

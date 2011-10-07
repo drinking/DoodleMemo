@@ -70,9 +70,7 @@ public class CreateMemo extends Activity implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
-        		WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.creatememo);
       
         /** use for get screen size
@@ -106,12 +104,14 @@ public class CreateMemo extends Activity implements
         filepath=i.getStringExtra("path");
         if(filepath!=null&&!filepath.equals("newfile"))
         {
+        	if(filepath.equals("viewDetail")){
 			File f=new File(GlobalValue.picsavepath);
 			File []files=f.listFiles();
 			if(files!=null)
 				filepath=files[0].getPath();
 			else
 				return;
+			}
         //displayview.changebackground(filepath);
         String path="/sdcard/DoodleMemo/save/dat/"+filepath.substring(filepath.length()-23, filepath.length()-4)+".dat";
         //filepath=filepath+"dat";
