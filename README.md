@@ -2,7 +2,7 @@ DoodleMemo
 ==========
 ### Introduction
 
-This is a Memo app for Android. You can draw freely using various colors,resize or rotate strokes. 
+This is a Memo app for Android. You can draw freely with various colors,resize or rotate strokes. 
 
 =========
 ###Screen Captures
